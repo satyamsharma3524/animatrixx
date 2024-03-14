@@ -15,7 +15,7 @@ function HelloWorld() {
   }, []);
 
   return (
-    <div>
+    <div className='mx-5 py-5'>
       <h1>Hello, World!</h1>
       <p>{message}</p>
     </div>
