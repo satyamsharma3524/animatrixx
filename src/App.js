@@ -1,11 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
-import HelloWorld from './HelloWorld';
+import Navbar from './Navbar';
+import Carousel from './Carousel';
+import SlidingCards from './SlidingCards';
 
 function App() {
   return (
     <div>
-      <HelloWorld />
+      <Navbar />
+      <Carousel />
+      <SlidingCards />
     </div>
   );
 }
