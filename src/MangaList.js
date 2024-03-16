@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
-function SlidingCards() {
+function MangaList() {
   const [cards, setCards] = useState('');
 
   useEffect(() => {
@@ -15,13 +16,9 @@ function SlidingCards() {
       });
   }, []);
 
-  function toggleText() {
-    const textElement = document.querySelector('.text-truncate p');
-    textElement.classList.toggle('text-truncate');
-  }
-
   return (
-    <div id="carouselExampleControls" className="carousel slide mx-5 my-5" data-bs-ride="carousel">
+    <div id="carouselExampleControls" className="carousel slide mx-5" data-bs-ride="carousel">
+      <h2 className="carousel-title d-flex my-5 mx-5">Manga List</h2>
       <div className="carousel-inner">
           {cards && cards.reduce((acc, card, index) => {
               const chunkIndex = Math.floor(index / 5);
@@ -31,7 +28,7 @@ function SlidingCards() {
               acc[chunkIndex].push(card);
               return acc;
           }, []).map((chunk, chunkIndex) => (
-              <div className={`carousel-item ${chunkIndex === 0 ? 'active' : ''}`}>
+              <div className={`carousel-item ${chunkIndex === 0 ? 'active' : ''}`} key={chunkIndex}>
                   <div className="d-flex justify-content-center">
                       {chunk.map(card => (
                           <div className="card mx-3" style={{width: "18rem"}}>
@@ -39,7 +36,7 @@ function SlidingCards() {
                               <div className="card-body">
                                   <h5 className="card-title">{card.name}</h5>
                                   <p className="card-text text-truncate">{card.description}</p>
-                                  <a href="#" className="btn btn-primary">Go somewhere</a>
+                                  <Link to={`/chapters/${card.id}`} className="btn btn-primary">Read</Link>
                               </div>
                           </div>
                       ))}
@@ -59,4 +56,4 @@ function SlidingCards() {
   );
 }
 
-export default SlidingCards;
+export default MangaList;
