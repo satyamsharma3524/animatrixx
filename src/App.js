@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './HomePage';
 import MangaChapters from './MangaChapters';
+import MangaFileReader from './MangaFileReader';
 
 // Bootstrap CSS
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -15,6 +16,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/chapters/:pk" element={<MangaChapters />} />
+                <Route path="/manga/:pk" element={<MangaFileReader />} />
             </Routes>
         </Router>
     </div>

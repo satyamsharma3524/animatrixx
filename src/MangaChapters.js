@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import MangaFileReader from './MangaFileReader';
+import { Link } from 'react-router-dom';
 
 const MangaChapters = () => {
     const { pk } = useParams();
     const [chapterData, setChapterData] = useState(null);
-    const [selectedChapter, setSelectedChapter] = useState(null);
     const SERVER_BASE_URL = "http://localhost:8000/";
 
     useEffect(() => {
@@ -21,10 +20,6 @@ const MangaChapters = () => {
 
         fetchChapterData();
     }, [pk]);
-
-    const handleReadButtonClick = (chapter) => {
-        setSelectedChapter(chapter);
-    };
 
     return (
         <div id="carouselExampleControls" className="carousel slide mx-5 my-5" data-bs-ride="carousel">
@@ -45,11 +40,10 @@ const MangaChapters = () => {
                                 <div className="card-body">
                                     <h5 className="card-title">{chapter.name}</h5>
                                     <p className="card-text text-truncate">{chapter.description}</p>
-                                    <button onClick={() => handleReadButtonClick(chapter)} className="btn btn-primary">Read</button>
+                                    <Link to={`/manga/${chapter.id}`} className="btn btn-primary">Read</Link>
                                 </div>
                             </div>
                         ))}
-                        {selectedChapter && <MangaFileReader mangaFile={selectedChapter.manga_file} />}
                     </div>
                 </div>
             ))}
