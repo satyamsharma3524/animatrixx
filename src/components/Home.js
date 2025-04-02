@@ -9,7 +9,12 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setMovies } from "../features/movie/movieSlice";
 import { selectUserName } from "../features/user/userSlice";
-import { selectRecommend, selectNewDisney, selectOriginal, selectTrending } from "../features/movie/movieSlice";
+import {
+  selectRecommend,
+  selectNewDisney,
+  selectOriginal,
+  selectTrending,
+} from "../features/movie/movieSlice";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -24,7 +29,9 @@ const Home = () => {
 
     const fetchMovies = async () => {
       try {
-        const response = await fetch("https://server.animatrixx.in/api/manga/10/chapters/");
+        const response = await fetch(
+          "https://server.animatrixx.in/api/manga/10/chapters/"
+        );
         if (!response.ok) throw new Error("Failed to fetch data");
         const data = await response.json();
 
